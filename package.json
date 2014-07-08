@@ -1,0 +1,35 @@
+{
+    "name" : "grunt-contrib-eslint",
+    "version" : "0.0.1",
+    "description" : "Validate files with ESLint",
+    "license" : "MIT",
+    "repository" : "https://github.com/gyandeeps/grunt-contrib-eslint",
+    "author" : {
+        "name" : "Gyandeep Singh",
+        "email" : "gyandeeps@gmail.com"
+    },
+    "dependencies": {
+        "eslint": "^0.7.1"
+    },
+    "peerDependencies": {
+        "grunt": ">=0.4.0"
+    },
+    "engines": {
+        "node": ">=0.10.0"
+    },
+    "scripts": {
+        "test": "grunt"
+    },
+    "files": [
+        "tasks"
+    ],
+    "keywords": [
+        "gruntplugin",
+        "lint",
+        "eslint",
+        "jshint",
+        "jslint",
+        "ecmascript",
+        "esprima"
+    ]
+}
