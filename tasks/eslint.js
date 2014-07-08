@@ -6,22 +6,13 @@ module.exports = function(grunt){
         var response;
         var silent;
         var options = this.options({
-            "silent": false //If you want the grunt task to fail or just be success
+            "silent": false
         });
 
-        //This is if you are not using multiple tasks
-        if(this.target === "target"){
-            if(this.filesSrc.length === 0){
-                return console.log("No Files specified");
-            }
-            options._ = this.filesSrc;
+        if(this.filesSrc.length === 0){
+            return console.log("No Files specified");
         }
-        else{ //This for multiple tasks
-            if(this.data.target.length === 0){
-                return console.log("No Files specified");
-            }
-            options._ = this.data.target;
-        }
+        options._ = this.filesSrc;
 
         silent = options.silent;
         delete options.silent;
