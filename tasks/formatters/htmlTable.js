@@ -22,7 +22,7 @@ module.exports = function(results){
         messages.forEach(function(message){
             messageType = getMessageType(message);
 
-            output += "<tr style='color:" + (messageType === "error" ? "red" : "blue") + "';>";
+            output += "<tr style='color:" + (messageType === "Error" ? "red" : "blue") + "';>";
             output += "<td style='padding: 4px 8px 4px 8px;'>" + (message.line || 0) + "</td>";
             output += "<td style='padding: 4px 8px 4px 8px;'>" + (message.column || 0) + "</td>";
             output += "<td style='padding: 4px 8px 4px 8px;'>" + messageType + "</td>";
