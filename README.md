@@ -1,6 +1,6 @@
-[![NPM version](https://badge.fury.io/js/grunt-contrib-eslint.svg)](http://badge.fury.io/js/grunt-contrib-eslint)
+[![NPM version](https://badge.fury.io/js/gruntify-eslint.svg)](http://badge.fury.io/js/gruntify-eslint)
 
-grunt-contrib-eslint
+gruntify-eslint
 ====================
 
 Grunt plugin for Eslint
@@ -10,13 +10,13 @@ Grunt plugin for Eslint
 If you haven't used [grunt][] before, be sure to check out the [Getting Started][] guide, as it explains how to create a [gruntfile][Getting Started] as well as install and use grunt plugins. Once you're familiar with that process, install this plugin with this command:
 
 ```bash
-$ npm install --save-dev grunt-contrib-eslint
+$ npm install --save-dev gruntify-eslint
 ```
 
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
-grunt.loadNpmTasks("grunt-contrib-eslint");
+grunt.loadNpmTasks("gruntify-eslint");
 ```
 
 [grunt]: http://gruntjs.com
@@ -36,7 +36,7 @@ grunt.initConfig({
 	}
 });
 
-grunt.loadNpmTasks("grunt-contrib-eslint");
+grunt.loadNpmTasks("gruntify-eslint");
 grunt.registerTask("default", ["eslint"]);
 ```
 
@@ -53,7 +53,7 @@ grunt.initConfig({
 	}
 });
 
-grunt.loadNpmTasks("grunt-contrib-eslint");
+grunt.loadNpmTasks("gruntify-eslint");
 grunt.registerTask("default", ["eslint"]);
 ```
 
@@ -69,7 +69,7 @@ grunt.initConfig({
 	}
 });
 
-grunt.loadNpmTasks("grunt-contrib-eslint");
+grunt.loadNpmTasks("gruntify-eslint");
 grunt.registerTask("default", ["eslint"]);
 ```
 
@@ -94,7 +94,7 @@ grunt.config.init({
   }
 });
 
-grunt.loadNpmTasks("grunt-contrib-eslint");
+grunt.loadNpmTasks("gruntify-eslint");
 grunt.registerTask("default", ["eslint"]);
 ```
 
@@ -111,7 +111,7 @@ grunt.initConfig({
 	}
 });
 
-grunt.loadNpmTasks("grunt-contrib-eslint");
+grunt.loadNpmTasks("gruntify-eslint");
 grunt.registerTask("default", ["eslint"]);
 ```
 
