@@ -2,30 +2,50 @@ var path = require("path");
 
 module.exports = function(grunt){
     grunt.registerMultiTask("eslint", "Validate files with ESLint", function(){
-        var eslint = require("eslint").cli;
+        var CLIEngine = require("eslint").CLIEngine;
+        var eslint;
         var response;
-        var silent;
+        var formatter;
+        var report;
         var options = this.options({
-            "silent": false
+            "silent": false,
+            "format": "stylish",
+            "callback": "false"
         });
 
         if(this.filesSrc.length === 0){
             return console.log("No Files specified");
         }
-        options._ = this.filesSrc;
 
-        silent = options.silent;
-        delete options.silent;
+        try{
+            eslint = new CLIEngine(options);
+            response = eslint.executeOnFiles(this.filesSrc);
+        }
+        catch(err){
+            grunt.warn(err);
+            return;
+        }
 
-        options.config = options.config ? path.resolve(options.config) : "";
-        response = eslint.execute(options);
+        if(options.callback && options.callback.constructor === Function){
+            return options.callback(response);
+        }
 
-        if(silent){
+        formatter = eslint.getFormatter(options.format);
+
+        if (!formatter) {
+            grunt.warn("Formatter " + options.format + " not found");
+            return;
+        }
+
+        report = formatter(response.results);
+
+        console.log(report);
+
+        if(options.silent){
             return true;
         }
         else{
-            return response === 0;
+            return response.errorCount === 0;
         }
-
     });
 };

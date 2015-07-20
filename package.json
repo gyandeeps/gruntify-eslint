@@ -12,10 +12,10 @@
     "email": "gyandeeps@gmail.com"
   },
   "dependencies": {
-    "eslint": "<1.0.0"
+    "eslint": ">=0.24.1"
   },
   "peerDependencies": {
-    "grunt": ">=0.4.0"
+    "grunt": ">=0.4.5"
   },
   "engines": {
     "node": ">=0.10.0"
