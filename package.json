@@ -1,40 +1,40 @@
 {
-    "name" : "gruntify-eslint",
-    "version" : "0.1.0",
-    "description" : "Validate files with ESLint",
-    "license" : "MIT",
-    "repository" : "https://github.com/gyandeeps/gruntify-eslint",
-    "bugs" : {
-        "url" : "https://github.com/gyandeeps/gruntify-eslint/issues"
-    },
-    "author" : {
-        "name" : "Gyandeep Singh",
-        "email" : "gyandeeps@gmail.com"
-    },
-    "dependencies": {
-        "eslint": "<1.0.0"
-    },
-    "peerDependencies": {
-        "grunt": ">=0.4.0"
-    },
-    "engines": {
-        "node": ">=0.10.0"
-    },
-    "scripts": {
-        "test": "grunt"
-    },
-    "files": [
-        "tasks"
-    ],
-    "keywords": [
-        "gruntplugin",
-        "lint",
-        "eslint",
-        "jshint",
-        "jslint",
-        "ecmascript",
-        "esprima",
-        "javascript",
-        "code quality"
-    ]
+  "name": "gruntify-eslint",
+  "version": "0.1.1",
+  "description": "Validate files with ESLint",
+  "license": "MIT",
+  "repository": "https://github.com/gyandeeps/gruntify-eslint",
+  "bugs": {
+    "url": "https://github.com/gyandeeps/gruntify-eslint/issues"
+  },
+  "author": {
+    "name": "Gyandeep Singh",
+    "email": "gyandeeps@gmail.com"
+  },
+  "dependencies": {
+    "eslint": "<1.0.0"
+  },
+  "peerDependencies": {
+    "grunt": ">=0.4.0"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "grunt"
+  },
+  "files": [
+    "tasks"
+  ],
+  "keywords": [
+    "gruntplugin",
+    "lint",
+    "eslint",
+    "jshint",
+    "jslint",
+    "ecmascript",
+    "esprima",
+    "javascript",
+    "code quality"
+  ]
 }
