@@ -46,26 +46,10 @@ grunt.registerTask("default", ["eslint"]);
 grunt.initConfig({
 	eslint: {					
 		options: {
-			config: "conf/eslint.json",	
-			rulesdir: ["conf/rules"]		
+			configFile: "conf/eslint.json",
+			rulePaths: ["conf/rules"]
 		},
 		src: ["app.js"]
-	}
-});
-
-grunt.loadNpmTasks("gruntify-eslint");
-grunt.registerTask("default", ["eslint"]);
-```
-
-### Example with custom formatter
-
-```js
-grunt.initConfig({
-	eslint: {						
-		options: {
-			format: "./formatter/htmlTable"
-		},
-		src: ["app.js"]		
 	}
 });
 
@@ -81,14 +65,14 @@ grunt.config.init({
     nodeFiles: {
       src: ["server/**/*.js"],
       options: {
-        config: "conf/eslint-node.json"
+        configFile: "conf/eslint-node.json"
       }
     },
 
     browserFiles: {
       src: ["client/**/*.js"]
       options: {
-        config: "conf/eslint-browser.json"
+        configFile: "conf/eslint-browser.json"
       }
     }
   }
@@ -104,7 +88,6 @@ grunt.registerTask("default", ["eslint"]);
 grunt.initConfig({
 	eslint: {						
 		options: {
-			format: "./formatter/htmlTable",
 			silent: true
 		},
 		src: ["app.js"]		
@@ -116,20 +99,15 @@ grunt.registerTask("default", ["eslint"]);
 ```
 
   
-### Options
+### [Options](http://eslint.org/docs/developer-guide/nodejs-api#cliengine)
 
-#### config
+#### configFile
 
-Type: `path::String`  
-
-#### rulesdir
-
-Type: `[path::String]`  
-Default: [built-in rules directory](https://github.com/nzakas/eslint/tree/master/lib/rules)
+Type: `path::String`
 
 #### format
 
-Type: `String`  
+Type: `String`
 Default: `'stylish'`
 
 Name of a [built-in formatter](https://github.com/nzakas/eslint/tree/master/lib/formatters) or path to a custom one.
@@ -138,10 +116,17 @@ Name of a [built-in formatter](https://github.com/nzakas/eslint/tree/master/lib/
 
 Type: `Boolean`
 
-Whether the grunt task would fail on error or will it alwways pass irrespective of the results.
+Whether the grunt task would fail on error or will it always pass irrespective of the results.
 i.e. to supress the failure.
+This option is not passed to the eslint api.
+
+#### callback
+
+Type: `Function`
+
+You can specify a call back function which would be called when eslint is done processing the files. The first argument passed in would be the results object.
 This option is not passed to the eslint api.
 
 ** More information about options: [Eslint options]
 
-[Eslint options]: https://github.com/eslint/eslint/tree/master/docs/command-line-interface#options
+[Eslint options]: http://eslint.org/docs/developer-guide/nodejs-api#cliengine
