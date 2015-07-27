@@ -14,6 +14,9 @@
   "dependencies": {
     "eslint": ">=0.24.1"
   },
+  "devDependencies": {
+    "shelljs": "~0.3.0"
+  },
   "peerDependencies": {
     "grunt": ">=0.4.5"
   },
@@ -21,7 +24,10 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "grunt"
+    "test": "grunt",
+    "patch": "node Makefile.js patch",
+    "minor": "node Makefile.js minor",
+    "major": "node Makefile.js major"
   },
   "files": [
     "tasks"
