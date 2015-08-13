@@ -9,6 +9,7 @@ module.exports = function(grunt){
         var report;
         var options = this.options({
             "silent": false,
+            "quiet": false,
             "format": "stylish",
             "callback": "false"
         });
@@ -35,6 +36,10 @@ module.exports = function(grunt){
         if (!formatter) {
             grunt.warn("Formatter " + options.format + " not found");
             return;
+        }
+
+        if (options.quiet) {
+            response.results = CLIEngine.getErrorResults(response.results);
         }
 
         report = formatter(response.results);
