@@ -10,6 +10,7 @@ module.exports = function(grunt){
         var options = this.options({
             "silent": false,
             "quiet": false,
+            "maxWarnings": -1,
             "format": "stylish",
             "callback": "false"
         });
@@ -48,6 +49,9 @@ module.exports = function(grunt){
 
         if(options.silent){
             return true;
+        }
+        else if(options.maxWarnings > -1 && response.warningCount > options.maxWarnings){
+            return false;
         }
         else{
             return response.errorCount === 0;

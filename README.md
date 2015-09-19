@@ -98,7 +98,7 @@ grunt.loadNpmTasks("gruntify-eslint");
 grunt.registerTask("default", ["eslint"]);
 ```
 
-  
+
 ### [Options](http://eslint.org/docs/developer-guide/nodejs-api#cliengine)
 
 #### configFile
@@ -118,6 +118,14 @@ Type: `Boolean`
 
 Whether the grunt task would fail on error or will it always pass irrespective of the results.
 i.e. to supress the failure.
+This option is not passed to the eslint api.
+
+#### maxWarnings
+
+Type: `Number`
+Default: `-1`
+
+Specifies a warning threshold, which will cause the task to fail if there are too many warning-level rule violations.
 This option is not passed to the eslint api.
 
 #### callback
