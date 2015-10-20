@@ -39,6 +39,10 @@ module.exports = function(grunt){
             return;
         }
 
+        if (options.fix) {
+            CLIEngine.outputFixes(response);
+        }
+
         if (options.quiet) {
             response.results = CLIEngine.getErrorResults(response.results);
         }
