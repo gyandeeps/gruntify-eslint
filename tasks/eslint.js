@@ -49,7 +49,12 @@ module.exports = function(grunt){
 
         report = formatter(response.results);
 
-        console.log(report);
+        if (options.outputFile) {
+            grunt.file.write(options.outputFile, report);
+            grunt.log.writeln('Report written to ' + options.outputFile);
+        } else {
+            console.log(report);
+        }
 
         if(options.silent){
             return true;

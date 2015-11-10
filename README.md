@@ -31,7 +31,7 @@ See the grunt [docs](https://github.com/gruntjs/grunt/wiki) on how to [configure
 
 ```js
 grunt.initConfig({
-	eslint: {					
+	eslint: {
 		src: ["app.js"]
 	}
 });
@@ -44,7 +44,7 @@ grunt.registerTask("default", ["eslint"]);
 
 ```js
 grunt.initConfig({
-	eslint: {					
+	eslint: {
 		options: {
 			configFile: "conf/eslint.json",
 			rulePaths: ["conf/rules"]
@@ -86,11 +86,11 @@ grunt.registerTask("default", ["eslint"]);
 
 ```js
 grunt.initConfig({
-	eslint: {						
+	eslint: {
 		options: {
 			silent: true
 		},
-		src: ["app.js"]		
+		src: ["app.js"]
 	}
 });
 
@@ -134,6 +134,12 @@ Type: `Function`
 
 You can specify a call back function which would be called when eslint is done processing the files. The first argument passed in would be the results object.
 This option is not passed to the eslint api.
+
+#### outputFile
+
+Type: `path::String`
+
+Specify a file path to write the test results to. This option is not passed to the eslint api.
 
 ** More information about options: [Eslint options]
 
