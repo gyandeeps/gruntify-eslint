@@ -11,13 +11,11 @@
     "name": "Gyandeep Singh",
     "email": "gyandeeps@gmail.com"
   },
-  "dependencies": {
-    "eslint": "^2.1.0"
-  },
   "devDependencies": {
     "shelljs": "~0.3.0"
   },
   "peerDependencies": {
+    "eslint": "^2.1.0",
     "grunt": ">=0.4.5"
   },
   "engines": {
