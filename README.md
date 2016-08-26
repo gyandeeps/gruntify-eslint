@@ -135,6 +135,16 @@ Type: `Function`
 You can specify a call back function which would be called when eslint is done processing the files. The first argument passed in would be the results object.
 This option is not passed to the eslint api.
 
+#### terminateOnCallback
+
+Type: `Boolean`
+Default: `true`
+
+When specifying a callback gruntify-eslint will by default not output results, but instead return the return of the callback. 
+You may set `terminateOnCallback` to `false` in order to allow usual report output as long as your callback returns `undefined` or `results`.
+If you wish to modify results, have `callback` return modified `results`.
+This option is not passed to the eslint api.
+
 #### outputFile
 
 Type: `path::String`

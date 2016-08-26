@@ -12,7 +12,8 @@ module.exports = function(grunt){
             "quiet": false,
             "maxWarnings": -1,
             "format": "stylish",
-            "callback": "false"
+            "callback": "false",
+            "terminateOnCallback": "true"
         });
 
         if(this.filesSrc.length === 0){
@@ -29,7 +30,10 @@ module.exports = function(grunt){
         }
 
         if(options.callback && options.callback.constructor === Function){
-            return options.callback(response);
+            if(options.terminateOnCallback) {
+                return options.callback(response);
+            }
+            response = options.callback(response) || response;
         }
 
         formatter = eslint.getFormatter(options.format);
