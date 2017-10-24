@@ -17,7 +17,7 @@ module.exports = function(grunt){
         });
 
         if(this.filesSrc.length === 0){
-            return console.log("No Files specified");
+            return grunt.log.writeln("No Files specified");
         }
 
         try{
@@ -57,7 +57,7 @@ module.exports = function(grunt){
             grunt.file.write(options.outputFile, report);
             grunt.log.writeln('Report written to ' + options.outputFile);
         } else {
-            console.log(report);
+            grunt.log.writeln(report);
         }
 
         if(options.silent){
