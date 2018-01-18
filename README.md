@@ -25,7 +25,7 @@ grunt.loadNpmTasks("gruntify-eslint");
 
 ## Documentation
 
-See the grunt [docs](https://github.com/gruntjs/grunt/wiki) on how to [configure tasks](https://github.com/gruntjs/grunt/wiki/Configuring-tasks) and more advanced usage.
+See the grunt [docs](https://gruntjs.com/getting-started) on how to [configure tasks](https://gruntjs.com/configuring-tasks) and more advanced usage.
 
 ### Example
 
