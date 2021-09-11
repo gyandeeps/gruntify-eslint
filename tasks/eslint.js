@@ -1,13 +1,12 @@
-var path = require("path");
+// @ts-check
+
+const path = require("path");
 
 module.exports = function(grunt){
-    grunt.registerMultiTask("eslint", "Validate files with ESLint", function(){
-        var CLIEngine = require("eslint").CLIEngine;
-        var eslint;
-        var response;
-        var formatter;
-        var report;
-        var options = this.options({
+    grunt.registerMultiTask("eslint", "Validate files with ESLint", async function(){
+        const ESLint = require("eslint").ESLint;
+        const eslint = new ESLint();;
+        const options = this.options({
             "silent": false,
             "quiet": false,
             "maxWarnings": -1,
@@ -16,42 +15,48 @@ module.exports = function(grunt){
             "terminateOnCallback": "true"
         });
 
+        // This task is async.
+        var done = this.async()
+
         if(this.filesSrc.length === 0){
-            return grunt.log.writeln("No Files specified");
+            grunt.log.writeln("No Files specified");
+            return done()
         }
 
+        /** @type {import('eslint').ESLint.LintResult[]} */
+        let results;
+
         try{
-            eslint = new CLIEngine(options);
-            response = eslint.executeOnFiles(this.filesSrc);
+            results = await eslint.lintFiles(this.filesSrc);
         }
         catch(err){
             grunt.warn(err);
-            return;
+            return done(false);
         }
 
         if(options.callback && options.callback.constructor === Function){
             if(options.terminateOnCallback) {
-                return options.callback(response);
+                return done(await options.callback(results));
             }
-            response = options.callback(response) || response;
+            results = (await options.callback(results)) || results;
         }
 
-        formatter = eslint.getFormatter(options.format);
+        const formatter = await eslint.loadFormatter(options.format);
 
         if (!formatter) {
             grunt.warn("Formatter " + options.format + " not found");
-            return;
+            return done();
         }
 
         if (options.fix) {
-            CLIEngine.outputFixes(response);
+            await ESLint.outputFixes(results);
         }
 
         if (options.quiet) {
-            response.results = CLIEngine.getErrorResults(response.results);
+            results = ESLint.getErrorResults(results);
         }
 
-        report = formatter(response.results);
+        const report = formatter.format(results);
 
         if (options.outputFile) {
             grunt.file.write(options.outputFile, report);
@@ -60,14 +65,23 @@ module.exports = function(grunt){
             grunt.log.writeln(report);
         }
 
-        if(options.silent){
-            return true;
+        let warningCount = 0
+        let errorCount = 0
+
+        for (const result of results) {
+            warningCount += result.warningCount
+            errorCount += result.errorCount
         }
-        else if(options.maxWarnings > -1 && response.warningCount > options.maxWarnings){
-            return false;
+
+        if(options.silent){
+            return done(true);
+        }
+        else if(options.maxWarnings > -1 && warningCount > options.maxWarnings){
+            grunt.warn("More than "+options.maxWarnings+" warnings.");
+            return done(false);
         }
         else{
-            return response.errorCount === 0;
+            return done(errorCount === 0);
         }
     });
 };
